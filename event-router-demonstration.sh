@@ -1,9 +1,9 @@
 #!/usr/bin/sh
 
+#Download the related projects
 git clone https://github.com/bloodyrafo75/PoC-event-router-core-lib
 git clone https://github.com/bloodyrafo75/PoC-core-event-API
 git clone https://github.com/bloodyrafo75/PoC-core-event-router-CLI
-
 
 export GO111MODULE=on
 
@@ -31,5 +31,5 @@ cd ../PoC-event-router-core-lib
 cp configs/.env.dist configs/.env
 go run cmd/main.go 
 
-#sleep 2 #waits for 2 seconds
+#sleep 2 #waits for 2 seconds and kills Api server (It's supposed to be listening at port 3000)
 kill $(lsof -t -sTCP:LISTEN -i:3000)
